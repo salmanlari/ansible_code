@@ -1,0 +1,4 @@
+---
+# vars file for apache
+pkg_name: apache2
+dest_path: /var/www/html/

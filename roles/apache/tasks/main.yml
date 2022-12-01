@@ -1,0 +1,9 @@
+---
+# tasks file for apache
+- name: install httpd
+  apt: name={{pkg_name}} state=latest 
+- name: start httpd
+  service: name={{pkg_name}} state=started
+- name: deploy html file
+  copy: src=index.html dest={{dest_path}}
+  notify: restart apache

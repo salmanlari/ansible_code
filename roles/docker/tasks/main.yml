@@ -1,0 +1,13 @@
+---
+# tasks file for docker
+
+- name: install docker
+  apt: name={{pkg_name}} state=latest
+# - name: uninstall docker
+#   apt: name={{pkg_name}} state=absent
+- name: start docker
+  service: name={{pkg_name}} state=started
+  notify: restart docker
+# - name: stop docker
+#   service: name={{pkg_name}} state=stopped
+  

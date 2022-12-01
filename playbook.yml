@@ -1,0 +1,27 @@
+---
+  - name: Playbook
+    hosts: all
+    become: yes
+    become_user: root
+    tasks:
+      - name: ensure apache is at the latest version
+        apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+      - name: install nginx
+        apt:
+          name: nginx
+          state: latest
+
+      - name: apply templete
+        template:
+          src: index.html 
+          dest: /var/www/html/
+
+      - name: make new file
+        become: yes
+        become_user: ubuntu
+        file:
+          path: /home/ubuntu/nik
+          state: touch
+          mode: 0600
+          

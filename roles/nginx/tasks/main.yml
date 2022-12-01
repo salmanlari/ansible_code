@@ -1,0 +1,14 @@
+---
+# tasks file for nginx
+
+- name: install nginx
+  apt: name={{pkg_name}} state=latest
+# - name: uninstall nginx
+#   apt: name={{pkg_name}} state=absent
+- name: start nginx
+  service: name={{pkg_name}} state=started
+# - name: stop nginx
+#   service: name={{pkg_name}} state=stopped
+- name: deploy html file
+  copy: src=index.html dest={{dest_path}}
+  notify: restart nginx

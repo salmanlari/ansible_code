@@ -1,0 +1,8 @@
+---
+  - name: playbook-role
+    hosts: server-1
+    become: yes
+    become_user: root
+    roles:
+     - nginx
+     - docker       
